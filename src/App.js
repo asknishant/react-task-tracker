@@ -31,7 +31,7 @@ function App() {
 
   // Fetch Task
   const fetchTask = async (id) => {
-    const res = await fetch(baseUrl + `${id}`)
+    const res = await fetch(baseUrl + `/${id}`)
     const data = await res.json()
 
     return data
@@ -57,7 +57,7 @@ function App() {
   }
 
   const deleteTask = async (id) => {
-    await fetch(baseUrl + `${id}`, {
+    await fetch(baseUrl + `/${id}`, {
       method: 'DELETE'
     })
 
@@ -69,7 +69,7 @@ function App() {
     const taskToToggle = await fetchTask(id)
     const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder }
 
-    const res = await fetch(baseUrl + `${id}`, {
+    const res = await fetch(baseUrl + `/${id}`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json',
